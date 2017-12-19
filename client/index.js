@@ -13,10 +13,10 @@ const client = new ApolloClient({});
 const Root = () => (
   <ApolloProvider client={client}>
     <Router history={hashHistory}>
-      <Router path="/" component={App}>
+      <Route path="/" component={App}>
         <IndexRoute component={SongList} />
-        <Route path="songs/new" component={SongCreate} />
-      </Router>
+        <Route path="/songs/new" component={SongCreate} />
+      </Route>
     </Router>
   </ApolloProvider>
 );
