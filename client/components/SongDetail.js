@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import fetchSong from '../queries/fetchSong';
+import { Link } from 'react-router';
+import LyricCreate from './LyricCreate';
 
-const SongDetail = () => {
-  return (
-    <div>
-      <h3>Song Detail</h3>
-    </div>
-  );
-};
+class SongDetail extends Component {
+  render() {
+    const { song } = this.props.data;
 
-export default SongDetail;
+    if (!song) {
+      return (
+        <div>
+          <h3>Loading...</h3>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <Link to="/">Back</Link>
+        <h3>{song.title}</h3>
+        <LyricCreate />
+      </div>
+    );
+  }
+}
+
+export default graphql(fetchSong, {
+  options: props => {
+    return { variables: { id: props.params.id } };
+  },
+})(SongDetail);

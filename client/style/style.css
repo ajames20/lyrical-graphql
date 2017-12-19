@@ -9,5 +9,5 @@
 }
 
 .material-icons:hover {
-  color: #f2453d;
+  transform: scale(1.25);
 }
