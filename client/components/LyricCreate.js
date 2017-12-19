@@ -13,6 +13,14 @@ class LyricCreate extends Component {
 
   onSubmit(event) {
     event.preventDefault();
+
+    this.props.mutate({
+      variables: {
+        content: this.state.content,
+        songId: this.props.songId,
+      },
+    });
+    this.setState({ content: '' });
   }
 
   render() {
@@ -23,7 +31,7 @@ class LyricCreate extends Component {
           <input
             type="text"
             value={this.state.content}
-            onChange={evnet => this.setState({ content: this.target.value })}
+            onChange={event => this.setState({ content: event.target.value })}
           />
         </form>
       </div>
@@ -31,4 +39,4 @@ class LyricCreate extends Component {
   }
 }
 
-export default LyricCreate;
+export default graphql(addLyric)(LyricCreate);
