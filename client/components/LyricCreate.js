@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import addLyric from '../mutations/addLyric';
+import mutation from '../mutations/addLyric';
 
 class LyricCreate extends Component {
   constructor(props) {
@@ -39,4 +39,4 @@ class LyricCreate extends Component {
   }
 }
 
-export default graphql(addLyric)(LyricCreate);
+export default graphql(mutation)(LyricCreate);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Link, hashHistory } from 'react-router';
-import fetchSongs from '../queries/fetchSongs';
+import query from '../queries/fetchSongs';
 import mutation from '../mutations/addSong';
 
 class SongCreate extends Component {
@@ -18,9 +18,10 @@ class SongCreate extends Component {
     this.props
       .mutate({
         variables: { title: this.state.title },
-        refetchQueries: [{ fetchSongs }],
+        refetchQueries: [{ query }],
       })
-      .then(() => hashHistory.push('/'));
+      .then(() => hashHistory.push('/'))
+      .catch(err => console.log(err));
   }
 
   render() {
