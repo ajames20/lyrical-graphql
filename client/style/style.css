@@ -6,8 +6,15 @@
 .material-icons {
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-left: 5px;
+  margin-bottom: 7px;
 }
 
 .material-icons:hover {
   transform: scale(1.25);
+}
+
+.vote-box {
+  display: flex;
+  align-items: center;
 }
